@@ -1,17 +1,20 @@
 <script setup>
-import { date } from 'quasar'
 import TodoForm from "src/components/TodoForm.vue";
+import TodoList from "src/components/TodoList.vue";
+import { useTodosStore } from "src/stores/todos-store";
 
-const today = date.formatDate(Date.now(), 'DD.MM.YYYY')
+const todosStore = useTodosStore();
 </script>
 
 <template>
-  <q-page class="q-px-xl">
+  <q-page class="q-px-md q-px-sm-xl">
     <h1 class="text-h2">
       Today's tasks
-      <q-chip size="xl" outline square color="secondary" text-color="white" icon="today" :label="today" />
     </h1>
+
     <TodoForm />
+
+    <TodoList :list="todosStore.todayTodos" empty-text="Write task for today" class="q-mt-md" />
   </q-page>
 </template>
 

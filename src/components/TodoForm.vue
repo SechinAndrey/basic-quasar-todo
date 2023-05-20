@@ -66,15 +66,15 @@ onClickOutside(form, () => isShowFullForm.value = false);
         type="date"
         label="Due date"
       />
-    </q-expansion-item>
 
-    <q-btn
+      <q-btn
         class="q-mt-md"
         type="submit"
         color="primary"
         label="Add"
         icon="add"
       />
+    </q-expansion-item>
   </q-form>
 </template>
 
