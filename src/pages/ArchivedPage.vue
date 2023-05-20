@@ -10,8 +10,8 @@ const todosStore = useTodosStore();
   <q-page class="q-px-md q-px-sm-xl">
     <h1 class="text-h2">Archived To-Dos</h1>
 
-    <TodoForm />
+    <!-- <TodoForm /> -->
 
-    <TodoList :list="todosStore.removedTodos" empty-text="No removed tasks yet" class="q-mt-md" />
+    <TodoList :list="todosStore.archivedTodos" empty-text="No archived tasks yet" class="q-mt-md" />
   </q-page>
 </template>

@@ -27,9 +27,9 @@ const menuList = [
     separator: false
   },
   {
-    icon: 'delete_outline',
-    label: 'Removed',
-    path: '/removed',
+    icon: 'o_archive',
+    label: 'Archived',
+    path: '/archived',
     separator: true
   },
   {

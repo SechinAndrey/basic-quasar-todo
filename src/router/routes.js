@@ -22,10 +22,10 @@ const routes = [
     ]
   },
   {
-    path: '/removed',
+    path: '/archived',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/RemovedPage.vue') }
+      { path: '', component: () => import('pages/ArchivedPage.vue') }
     ]
   },
   {

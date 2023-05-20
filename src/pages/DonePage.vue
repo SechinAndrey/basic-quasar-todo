@@ -10,7 +10,7 @@ const todosStore = useTodosStore();
   <q-page class="q-px-md q-px-sm-xl">
     <h1 class="text-h2">Done To-Dos</h1>
 
-    <TodoForm />
+    <!-- <TodoForm /> -->
 
     <TodoList :list="todosStore.doneTodos" empty-text="Keep working and you'll be fine" class="q-mt-md" />
   </q-page>

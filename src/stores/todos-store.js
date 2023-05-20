@@ -27,16 +27,16 @@ export const useTodosStore = defineStore('todos', () => {
    *    createdAt: new Date(),
    *    endDate: new Date(),
    *    done: false,
-   *    removed: false,
+   *    archived: false,
    *  }
    * ]
    */
   const todos = ref([...initialTodos]);
-  const undoneTodos = computed(() => todos.value.filter(todo => !todo.done && !todo.removed));
-  const doneTodos = computed(() => todos.value.filter(todo => todo.done && !todo.removed));
-  const removedTodos = computed(() => todos.value.filter(todo => todo.removed));
+  const undoneTodos = computed(() => todos.value.filter(todo => !todo.done && !todo.archived));
+  const doneTodos = computed(() => todos.value.filter(todo => todo.done && !todo.archived));
+  const archivedTodos = computed(() => todos.value.filter(todo => todo.archived));
   const todayTodos = computed(
-    () => todos.value.filter(todo => !todo.done && !todo.removed && todo.endDate <= new Date())
+    () => todos.value.filter(todo => !todo.done && !todo.archived && todo.endDate <= new Date())
   );
 
   function addTodo(newTodo) {
@@ -52,10 +52,19 @@ export const useTodosStore = defineStore('todos', () => {
     });
   }
 
-  function toggleTodoRemovedById(id) {
+  function archiveTodoById(id) {
     todos.value = todos.value.map(todo => {
       if (todo.id === id) {
-        todo.removed = !todo.removed;
+        todo.archived = !todo.archived;
+      }
+      return todo;
+    });
+  }
+
+  function unarchiveTodoById(id){
+    todos.value = todos.value.map(todo => {
+      if (todo.id === id) {
+        todo.archived = !todo.archived;
       }
       return todo;
     });
@@ -69,11 +78,12 @@ export const useTodosStore = defineStore('todos', () => {
     todos,
     undoneTodos,
     doneTodos,
-    removedTodos,
+    archivedTodos,
     todayTodos,
     addTodo,
     toggleTodoDoneById,
-    toggleTodoRemovedById,
+    archiveTodoById,
+    unarchiveTodoById,
     removeTodoById,
   };
 });
